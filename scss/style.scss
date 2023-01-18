@@ -1,0 +1,157 @@
+@import 'mixins';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;800&display=swap');
+
+
+:root {
+    --color-light: #000;
+    --color-dark: #fff;
+    --bg-button-dark: rgba(255, 255, 255, 0.1);
+    --border-button-dark: 1px solid rgba(255, 255, 255, 0.5);
+    --bg-button-light: rgba(0, 0, 0, 0.1);
+    --border-button-light: 1px solid rgba(0, 0, 0, 0.5);
+    --font-md: 16px;
+    --font-lg: 24px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: var(--color-dark);
+
+}
+
+body.light {
+    color: var(--color-light);
+
+    .container {
+        background: url(/assets/background-light.jpg) top center/cover;
+    }
+
+    button {
+        border: var(--color-light);
+        color: var(--color-light) !important;
+    }
+
+    .image-switcher {
+        img {
+            background: black;
+        }
+    }
+
+    .profileimage {
+        background: url(/assets/Avatar-light.png) top center / cover !important;
+    }
+}
+
+
+.container {
+    width: 100%;
+    background: url(/assets/background-dark.jpg) top center/cover;
+    transition: background 0.2s ease;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+
+    .hero {
+        max-width: 588px;
+        width: 100%;
+        height: 712px;
+        text-align: center;
+        padding: 24px 0;
+
+        &--switcher {
+            img {
+                margin-top: 20px;
+                background: white;
+                border-radius: 100%;
+                border: 2px solid transparent;
+                width: 50px;
+                cursor: pointer;
+                padding: 5px;
+                transition: all 0.5s ease;
+
+                &:hover {
+                    border: 2px solid rgba(255, 255, 255, 0.1);
+                    box-sizing: border-box;
+                    transform: scale(1.05);
+                    transition: all 0.5s ease;
+                }
+            }
+        }
+
+        &--header {
+            @include flex-center;
+            flex-direction: column;
+
+            span {
+                font-weight: 500;
+                font-size: var(--font-md);
+                margin-top: 8px;
+            }
+
+            .image {
+                background: url(/assets/Avatar-dark.png) top center / cover;
+                width: 112px;
+                height: 112px;
+            }
+
+        }
+
+        &--buttons {
+            @include flex-center();
+            flex-direction: column;
+            margin: 24px 48px;
+            height: 320px;
+            justify-content: space-between;
+
+            button {
+                width: 100%;
+                cursor: pointer;
+                background: var(--bg-button-dark);
+                font-size: var(--font-lg);
+                color: var(--color-dark);
+                padding: 16px 24px;
+                border-radius: 8px;
+                border: var(--border-button-light);
+                transition: all 0.2s ease;
+
+                &:hover {
+                    transform: scale(0.9);
+                    transition: all 1s ease;
+                }
+            }
+        }
+
+        &--social {
+            @include flex-center();
+            gap: 40px;
+            justify-content: center;
+            cursor: pointer;
+            height: 88px;
+
+
+            ion-icon {
+                font-size: 40px;
+                transition: filter 0.2s ease;
+
+                &:hover {
+                    filter: blur(2px);
+                    transition: filter 0.5s ease;
+                }
+            }
+
+        }
+
+    }
+}
